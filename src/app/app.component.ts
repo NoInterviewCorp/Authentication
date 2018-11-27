@@ -14,4 +14,10 @@ export class AppComponent {
     this.navbarOpen = !this.navbarOpen;
   }
 
+  logout() {
+    localStorage.removeItem("TOKEN");
+    //this.router.navigate(["/learner"]);
+  }
+
+
 }

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-//import { learnerSignIn, learnerSignUp } from './learner-model';
+import { learnerSignIn, learnerSignUp ,mytoken} from './learner-model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 //import {FormsModule} from '@angular/forms';
 import { TestService } from '../test.service';
 import { Router } from '@angular/router';
+import {MyToken} from '../my-token';
 
 
 @Component({
@@ -56,17 +57,7 @@ this.registerForm1 = this.formBuilder.group({
             return;
         }
 
-        console.log( signIn.email);
-
-       if(this.test.learnerSignIn(signIn))
-       {
-        alert('YOU ARE SUCCESSFULLY SIGNED IN!!')
-       }
-       else
-       {
-        alert('UNSUCCESSFULL ATTEMPT!!')
-       }
-
+        this.test.SignIn(signIn);
 
         
     }
@@ -78,18 +69,15 @@ this.registerForm1 = this.formBuilder.group({
       if (this.registerForm1.invalid) {
           return;
       }
-
-      console.log( signUp.email);
       
-      this.myBool= this.test.learnerSignUp(signUp);
+      this.test.SignUp(signUp)
 
-      if(this.myBool==true)
-      {
-        alert('YOU ARE SUCCESSFULLY REGISTERED!!');
-      }
-      else{
-        alert('INVALID ATTEMPT!!');
-      }
+      
+
+
+
+
+     
       
   }
 

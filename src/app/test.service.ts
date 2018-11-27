@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { map } from 'rxjs/operators';
-import { tokenKey } from '@angular/core/src/view';
-//import * as jwt_decode from 'jwt-decode';
-export const SME_TOKEN : string = 'SME_TOKEN';
-export const LEARNER_TOKEN : string = 'LEARNER_TOKEN'; 
+export const TOKEN : string = 'TOKEN';
+//export const LEARNER_TOKEN : string = 'LEARNER_TOKEN'; 
+import {MyToken} from './my-token';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -12,52 +11,98 @@ export const LEARNER_TOKEN : string = 'LEARNER_TOKEN';
 })
 export class TestService {
 
-  smeToken:any;
-  learnerToken:any;
-
-  constructor(private http: HttpClient) { }
+ 
+  constructor(private http: HttpClient, private router: Router) { }
 
 
-  smeSignIn(signIn)
-  {
-
-   console.log('signin', signIn);
-   const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-  
-  return this.http.post('http://localhost:5000/sme/signIn/',signIn, httpOptions);
-
-  }
-
-
-  smeSignUp(signUp)
+  SignIn(signIn)
   {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    return this.http.post('http://localhost:5000/sme/signUp',signUp,httpOptions);
+
+    this.http.post('http://localhost:5000/signIn',signIn,httpOptions).subscribe(response => (myfun(response,this.router)));
+
+    function myfun(response,router)
+      {
+        if(response=="user does not exist")
+        {
+          alert('user does not exist');
+        }
+        else if(response=="Password entered is not correct")
+        {
+          
+          alert("Password entered is not correct");
+        }
+
+        else if(response=="Invalid state")
+        {
+          alert("Invalid state");
+        }
+
+       else
+        {
+          // let mytoken = response as MyToken;
+          // var Token= mytoken.token;
+          // console.log(mytoken.token);
+          localStorage.setItem("TOKEN",response); 
+          alert("Succesful login");
+          router.navigate(['home']);
+          //window.location.href = "https://roiit2912.github.io/bootstrap4/";
+  
+        }
+      }
+    
   }
 
 
-  learnerSignIn(signIn)
+  SignUp(signUp)
   {
-    this.learnerToken= this.http.post('http://localhost:5000/learner/signIn',signIn).subscribe();
-    if(this.learnerToken==null)
-    {
-      return false;
-    }
-    else
-    {
-      localStorage.setItem(LEARNER_TOKEN,this.learnerToken);
-      return true;
-    }
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+   this.http.post('http://localhost:5000/signUp',signUp,httpOptions).subscribe(token => (myfun(token.toString())));
+
+    function myfun(token)
+      {
+        if(token=="User already exist")
+        {
+          alert("User already exist");
+        }
+        else if(token="Success")
+        { 
+          alert("Succesfully Registerd");
+        }
+
+        else{
+          alert("Invalid state");
+        }
+
+      }
   }
 
 
-  learnerSignUp(signUp)
+  
+  socialSignIn(userData)
   {
-    return this.http.post('http://localhost:5000/learner/signUp',signUp).subscribe();
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+
+    this.http.post('http://localhost:5000/socialSignIn',userData,httpOptions).subscribe(response => (myfun(response,this.router)));
+
+    function myfun(response,router)
+      {
+        //  let mytoken = response as MyToken;
+        //   var Token= mytoken.token;
+        //   console.log(mytoken.token);
+          localStorage.setItem("TOKEN",response); 
+          alert("Succesful login");
+          router.navigate(['home']);
+        
+
+      }
+
   }
 
 

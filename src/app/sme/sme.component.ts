@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 //import {FormsModule} from '@angular/forms';
 import { TestService } from '../test.service';
 import { Router } from '@angular/router';
+import {MyToken} from '../my-token';
 
 
 @Component({
@@ -55,31 +56,37 @@ this.registerForm1 = this.formBuilder.group({
             return;
         }
 
-       this.test.smeSignIn(signIn).subscribe(token => (myfun(token.toString())));
+       //this.test.smeSignIn(signIn).subscribe(response => (myfun(response)));
 
-       function myfun(token)
+       function myfun(response)
       {
-        if(token=="user does not exist")
+        if(response=="user does not exist")
         {
           alert('user does not exist');
         }
-        else if(token=="User Password combination is not correct")
+        else if(response=="Password entered is not correct")
         {
-          //console.log("&&&&&&&&", JSON.stringify(this.smeToken));
-          alert("User Password combination is not correct");
+          
+          alert("Password entered is not correct");
         }
 
-        else if(token=="You are a learner, Please sign in through learner page")
+        else if(response=="You are a learner, Please sign in through learner page")
         {
           alert("You are a learner, Please sign in through learner page");
         }
-
+        else if(response=="Invalid state")
+        {
+          alert("Invalid state");
+        }
        else
         {
-          localStorage.setItem("SME_TOKEN",token); 
+          let mytoken = response as MyToken;
+          var smeToken= mytoken.token;
+          console.log(mytoken.token);
+          localStorage.setItem("SME_TOKEN",smeToken);  
           alert("Succesful login");
           window.location.href = "https://roiit2912.github.io/angular-assignment/search";
-          //this.router.navigateByUrl('https://roiit2912.github.io/angular-assignment/search');
+  
         }
       }
         
@@ -93,9 +100,9 @@ this.registerForm1 = this.formBuilder.group({
           return;
       }
 
-      console.log( signUp.securityKey);
+      //console.log( signUp.securityKey);
       
-      this.test.smeSignUp(signUp).subscribe(token => (myfun(token.toString())));
+     // this.test.smeSignUp(signUp).subscribe(token => (myfun(token.toString())));
 
       function myfun(token)
       {
@@ -105,7 +112,7 @@ this.registerForm1 = this.formBuilder.group({
         }
         else if(token=="Wrong Security Key entered")
         {
-          //console.log("&&&&&&&&", JSON.stringify(this.smeToken));
+          
           alert("Wrong Security Key entered");
         }
 
@@ -115,7 +122,7 @@ this.registerForm1 = this.formBuilder.group({
         }
 
         else{
-          alert("some other case");
+          alert("Invalid state");
         }
 
       }

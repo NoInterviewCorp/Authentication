@@ -13,3 +13,8 @@ export class learnerSignIn
     password:string="";
 
 }
+
+export class mytoken
+{
+   token:string;
+}
