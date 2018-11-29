@@ -17,17 +17,29 @@ export class UsaComponent implements OnInit {
   value:string = "my india"  
  
 
+  // oncheck()
+  // {
+
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Authorization': this.mybearerToken
+  //     })
+  //   };
+
+  //  // this.http.post('http://localhost:4000/check',this.value,httpOptions).subscribe();
+  //   this.http.post('http://localhost:4000/check',this.value).subscribe();
+
+  // }
+
   oncheck()
   {
 
     const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': this.mybearerToken
-      })
-    };
-
-   // this.http.post('http://localhost:4000/check',this.value,httpOptions).subscribe();
-    this.http.post('http://localhost:4000/check',this.value).subscribe();
+          headers: new HttpHeaders({
+            'Authorization': this.mybearerToken
+          })
+        };
+    this.http.get("http://localhost:7000/orders-api/orders").subscribe(res=>console.log(res));
 
   }
 
