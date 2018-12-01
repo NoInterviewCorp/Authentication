@@ -21,7 +21,7 @@ export class TestService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
-    this.http.post('http://localhost:5000/signIn',signIn,httpOptions).subscribe(response => (myfun(response,this.router)));
+    this.http.post('http://172.23.238.173:5000/signIn',signIn,httpOptions).subscribe(response => (myfun(response,this.router)));
 
     function myfun(response,router)
       {
@@ -61,7 +61,7 @@ export class TestService {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-   this.http.post('http://localhost:5000/signUp',signUp,httpOptions).subscribe(token => (myfun(token.toString())));
+   this.http.post('http://172.23.238.173:5000/signUp',signUp,httpOptions).subscribe(token => (myfun(token.toString())));
 
     function myfun(token)
       {
@@ -89,7 +89,7 @@ export class TestService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
-    this.http.post('http://localhost:5000/socialSignIn',userData,httpOptions).subscribe(response => (myfun(response,this.router)));
+    this.http.post('http://172.23.238.173:5000/socialSignIn',userData,httpOptions).subscribe(response => (myfun(response,this.router)));
 
     function myfun(response,router)
       {

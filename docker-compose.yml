@@ -1,0 +1,8 @@
+version: 3
+services:
+  potentiometer-authentication:
+    build: .
+    ports:
+      - "8080:4200"  
+    labels:
+      SERVICE_4200_NAME: potentiometer-authentication
