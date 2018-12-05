@@ -52,7 +52,7 @@ export class TestService {
         alert("Succesful login");
         // router.navigate(['home']);
          
-           window.location.href = "http://172.23.238.173:80/profile/";
+           window.location.href = "http://172.23.238.173:80/profile/abc";
          // window.location.href = "http://172.23.238.173:80/AllConcepts/";
 
       }
