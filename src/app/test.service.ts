@@ -50,8 +50,9 @@ export class TestService {
         //console.log(document.cookie);
         localStorage.setItem("TOKEN", response);
         alert("Succesful login");
-         router.navigate(['home']);
-         // window.location.href = "https://roiit2912.github.io/angular-assignment";
+        // router.navigate(['home']);
+         
+         window.location.href = "http://172.23.238.173:80/profile";
 
       }
     }
@@ -102,8 +103,8 @@ export class TestService {
       //this.cookieService.set("TOKEN", response);
       localStorage.setItem("TOKEN", response);
       alert("Succesful login");
-      // router.navigate(['home']);
-      window.location.href = "http://172.23.238.173:80/profile";
+      router.navigate(['home']);
+      // window.location.href = "http://172.23.238.173:80/profile";
 
 
     }
