@@ -22,9 +22,9 @@ export class TestService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
-    //this.http.post('http://172.23.238.173:80/signIn', signIn, httpOptions).subscribe(response => (myfun(response, this.router)));
-    this.http.post('http://172.23.238.173:5000/signIn', signIn, httpOptions).subscribe(response => (myfun(response, this.router)));    
-   //this.http.post('http://localhost:5000/signIn', signIn, httpOptions).subscribe(response => (myfun(response, this.router)));
+    this.http.post('http://172.23.238.173:80/signIn', signIn, httpOptions).subscribe(response => (myfun(response, this.router)));
+    // this.http.post('http://172.23.238.173:5000/signIn', signIn, httpOptions).subscribe(response => (myfun(response, this.router)));    
+   // this.http.post('http://localhost:5000/signIn', signIn, httpOptions).subscribe(response => (myfun(response, this.router)));
 
     const myfun = (response, router) => {
       if (response == "user does not exist") {
@@ -64,8 +64,8 @@ export class TestService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
     
-    //this.http.post('http://172.23.238.173:80/signUp', signUp, httpOptions).subscribe(token => (myfun(token.toString())));
-    this.http.post('http://172.23.238.173:5000/signUp', signUp, httpOptions).subscribe(token => (myfun(token.toString())));
+    this.http.post('http://172.23.238.173:80/signUp', signUp, httpOptions).subscribe(token => (myfun(token.toString())));
+    // this.http.post('http://172.23.238.173:5000/signUp', signUp, httpOptions).subscribe(token => (myfun(token.toString())));
 
     //this.http.post('http://localhost:5000/signUp', signUp, httpOptions).subscribe(token => (myfun(token.toString())));
 
@@ -91,9 +91,9 @@ export class TestService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
-    //this.http.post('http://172.23.238.173:80/socialSignIn', userData, httpOptions).subscribe(response => (myfun(response, this.router)));
-    //this.http.post('http://172.23.238.173:5000/socialSignIn', userData, httpOptions).subscribe(response => (myfun(response, this.router)));
-    this.http.post('http://localhost:5000/socialSignIn', userData, httpOptions).subscribe(response => (myfun(response, this.router)));
+    this.http.post('http://172.23.238.173:80/socialSignIn', userData, httpOptions).subscribe(response => (myfun(response, this.router)));
+    // this.http.post('http://172.23.238.173:5000/socialSignIn', userData, httpOptions).subscribe(response => (myfun(response, this.router)));
+    // this.http.post('http://localhost:5000/socialSignIn', userData, httpOptions).subscribe(response => (myfun(response, this.router)));
     function myfun(response, router) {
       // let mytoken = response as MyToken;
       // var Token= mytoken.token;
