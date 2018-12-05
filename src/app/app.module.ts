@@ -16,6 +16,7 @@ import { AuthGuardService } from './auth-guard.service';
 import { AuthInterceptorService } from './auth-interceptor.service';
 import { TokenInterceptor } from './token-interceptor';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { CookieService } from 'ngx-cookie-service';
 import {SocialLoginModule,AuthServiceConfig,GoogleLoginProvider,FacebookLoginProvider} from "angular-6-social-login";
 
 export function getAuthServiceConfigs() {
@@ -57,6 +58,7 @@ export function getAuthServiceConfigs() {
   providers: [
     TestService,
     AuthGuardService,
+    CookieService,
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs

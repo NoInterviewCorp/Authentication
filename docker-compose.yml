@@ -1,8 +1,16 @@
-version: "3"
+version: "3.5"
 services:
   potentiometer-authentication:
     build: .
     ports:
-      - "8080:4200"  
+      - "8081:4200"  
     labels:
       SERVICE_4200_NAME: potentiometer-authentication
+      SERVICE_TAGS: Authentication_FrontEnd"
+    networks: 
+      - authentication-Front-network
+
+networks: 
+  authentication-Front-network:
+    name: potentiometer-network
+    external: true        

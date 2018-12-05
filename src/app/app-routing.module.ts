@@ -14,8 +14,9 @@ const routes: Routes = [
   {path: 'learner', component: LearnerComponent},
   {path: 'india' , component: IndiaComponent, canActivate:[AuthGuardService]},
   {path: 'usa' , component: UsaComponent,canActivate:[AuthGuardService] },
-  {path: 'home' , component: HomeComponent,canActivate:[AuthGuardService]},
-  {path: 'signIn' , component: SignInComponent }
+  {path: 'home' , component: HomeComponent},
+  {path: 'signIn' , component: SignInComponent },
+  {path: '' , redirectTo: '/home',pathMatch:"full"}
 ];
 
 @NgModule({
