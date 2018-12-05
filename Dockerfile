@@ -12,7 +12,7 @@ RUN npm install
 #Install any needed packages specified in requirements.txt
 RUN npm i @angular/cli
 COPY . /app
-
+    
 EXPOSE 4200
 
 CMD ["npm", "start"]
