@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-export const TOKEN: string = 'TOKEN';
-//export const LEARNER_TOKEN : string = 'LEARNER_TOKEN'; 
+export const TOKEN: string = 'TOKEN'; 
 import { MyToken } from './my-token';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -46,8 +45,8 @@ export class TestService {
         // docCookies.setItem('access_token', response);
         // document.cookie='TOKEN= [response]'
         document.cookie = 'TOKEN=' + response;
-        //this.cookieService.set("TOKEN", response);
-        //console.log(document.cookie);
+        // this.cookieService.set("TOKEN", response);
+        // console.log(document.cookie);
         localStorage.setItem("TOKEN", response);
         alert("Succesful login");
         // router.navigate(['home']);
@@ -104,8 +103,8 @@ export class TestService {
       //this.cookieService.set("TOKEN", response);
       localStorage.setItem("TOKEN", response);
       alert("Succesful login");
-      router.navigate(['home']);
-      // window.location.href = "http://172.23.238.173:80/profile";
+      // router.navigate(['home']);
+      window.location.href = "http://172.23.238.173:80/profile";
 
 
     }
